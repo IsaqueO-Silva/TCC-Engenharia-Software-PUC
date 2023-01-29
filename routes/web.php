@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\EntradaEstoque as ControllerEntradaEstoque;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,9 +22,7 @@ Route::get('/principal', function () {
     return view('principal');
 });
 
-Route::get('/entrada-estoque-listar', function () {
-    return view('entrada-estoque-listar');
-});
+Route::get('/entrada-estoque-listar', [ControllerEntradaEstoque::class, 'listar']);
 
 Route::get('/entrada-estoque-cadastrar', function () {
     return view('entrada-estoque-cadastrar');

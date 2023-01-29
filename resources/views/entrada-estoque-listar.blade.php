@@ -37,20 +37,22 @@
                                             <th style="width: 240px">&nbsp;</th>
                                         </tr>
                                     </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>Carregador Portátil</td>
-                                        <td>Admin</td>
-                                        <td>5</td>
-                                        <td>01/01/2023 12:52</td>
-                                        <td>Almoxarifado</td>
-                                        <td>
-                                            <a href="/entrada-estoque-alterar" class="btn btn-primary btn-xs"><i class="fa fa-edit"></i> Alterar</a>
-                                            <a href="" onclick="return confirm('Confirmar a exclusão do registro?')" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i> Excluir</a>
-                                        </td>
-                                    </tr>
-                                </tbody>
+                                    <tbody>
+                                        @foreach($resultados as $resultado)
+                                            <tr>
+                                                <td>{{ $resultado->id_entrada_estoque }}</td>
+                                                <td>{{ $resultado->produto }}</td>
+                                                <td>{{ $resultado->fornecedor }}</td>
+                                                <td>{{ $resultado->quantidade }}</td>
+                                                <td>{{ \Carbon\Carbon::parse($resultado->data_entrada_estoque)->format('d/m/Y HH:mm:ss') }}</td>
+                                                <td>{{ $resultado->estoque }}</td>
+                                                <td>
+                                                    <a href="/entrada-estoque-alterar" class="btn btn-primary btn-xs"><i class="fa fa-edit"></i> Alterar</a>
+                                                    <a href="" onclick="return confirm('Confirmar a exclusão do registro?')" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i> Excluir</a>
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
                                 </table>
                             </div>
                         </div>
