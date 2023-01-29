@@ -61,7 +61,7 @@
                     </div>
                 </div>
                 <div class="col-lg-3 col-xs-6">
-                    <a href="/entrada-estoque-listar">
+                    <a href="{{ route('entrada-estoque-listar') }}">
                         <div class="small-box bg-default-blue">
                             
                             <div class="inner">

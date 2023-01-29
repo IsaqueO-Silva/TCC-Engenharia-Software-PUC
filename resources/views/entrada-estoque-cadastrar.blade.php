@@ -25,7 +25,9 @@
                                 <div class="col-xs-12 col-md-12">
                                     <div class="form-group">
                                         <label for="produto">Produto <span class="text-red">*</span></label>
-                                        <input type="text" class="form-control" id="produto" name="produto" required>
+                                        <select id="produto" name="produto" class="form-control">
+                                          <option value="2">Samsung Galaxy A03 Core Dual SIM 32 GB mint 2 GB RAM</option>
+                                        </select>
                                     </div>
                                 </div>
                             </div>
@@ -33,13 +35,18 @@
                               <div class="col-xs-12 col-md-6">
                                 <div class="form-group">
                                   <label for="fornecedor">Fornecedor <span class="text-red">*</span></label>
-                                  <input type="text" class="form-control" id="fornecedor" name="fornecedor" required>
+                                  <select id="fornecedor" name="fornecedor" class="form-control">
+                                    <option value="1">Fornecedor01</option>
+                                  </select>
                                 </div>
                               </div>
                               <div class="col-xs-12 col-md-6">
                                 <div class="form-group">
                                     <label for="estoque">Estoque <span class="text-red">*</span></label>
                                     <input type="text" class="form-control" id="estoque" name="estoque" required>
+                                    <select id="fornecedor" name="fornecedor" class="form-control">
+                                      <option value="1">Almoxarifado de produtos</option>
+                                    </select>
                                 </div>
                               </div>
                             </div>

@@ -12,12 +12,16 @@ class EntradaEstoque extends Model
     protected $connection   = 'mysql';
     protected $table        = 'entradas_estoque';
 
-    public static function listar() {
+    public static function list() {
         return DB::table('entradas_estoque')
         ->join('produtos', 'entradas_estoque.id_produto', '=', 'produtos.id_produto')
         ->join('fornecedores', 'entradas_estoque.id_fornecedor', '=', 'fornecedores.id_fornecedor')
         ->join('estoques', 'entradas_estoque.id_estoque', '=', 'estoques.id_estoque')
         ->select('id_entrada_estoque', 'produtos.nome AS produto', 'fornecedores.nome_fantasia AS fornecedor', 'quantidade', 'data_entrada_estoque', 'estoques.nome AS estoque')
         ->get();
+    }
+
+    public static function destroy($idEntradaEstoque) {
+        return self::where('id_entrada_estoque', $idEntradaEstoque)->delete();
     }
 }

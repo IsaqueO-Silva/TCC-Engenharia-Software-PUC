@@ -44,11 +44,11 @@
                                                 <td>{{ $resultado->produto }}</td>
                                                 <td>{{ $resultado->fornecedor }}</td>
                                                 <td>{{ $resultado->quantidade }}</td>
-                                                <td>{{ \Carbon\Carbon::parse($resultado->data_entrada_estoque)->format('d/m/Y HH:mm:ss') }}</td>
+                                                <td>{{ \Carbon\Carbon::parse($resultado->data_entrada_estoque)->format('d/m/Y H:i') }}</td>
                                                 <td>{{ $resultado->estoque }}</td>
                                                 <td>
                                                     <a href="/entrada-estoque-alterar" class="btn btn-primary btn-xs"><i class="fa fa-edit"></i> Alterar</a>
-                                                    <a href="" onclick="return confirm('Confirmar a exclusão do registro?')" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i> Excluir</a>
+                                                    <a href="{{ route('entrada-estoque-excluir', array('id_entrada_estoque' => $resultado->id_entrada_estoque)) }}" onclick="return confirm('Confirmar a exclusão do registro?')" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i> Excluir</a>
                                                 </td>
                                             </tr>
                                         @endforeach

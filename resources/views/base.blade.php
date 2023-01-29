@@ -64,7 +64,7 @@
                     <li><a href="#"><i class="fa fa-cubes" aria-hidden="false"></i> <span>Produtos</span></a></li>
                     <li><a href="#"><i class="fa fa-users" aria-hidden="false"></i> <span>Fornecedores</span></a></li>
                     <li><a href="#"><i class="fa fa-building" aria-hidden="false"></i> <span>Estoques</span></a></li>
-                    <li><a href="/entrada-estoque-listar"><i class="fa fa-arrow-up" aria-hidden="true"></i> <span>Entradas de Estoque</span></a></li>
+                    <li><a href="{{ route('entrada-estoque-listar') }}"><i class="fa fa-arrow-up" aria-hidden="true"></i> <span>Entradas de Estoque</span></a></li>
                     <li><a href="#"><i class="fa fa-arrow-down" aria-hidden="true"></i> <span>Saídas de Estoque</span></a></li>
                 </ul>
             </section>

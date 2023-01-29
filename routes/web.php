@@ -22,7 +22,7 @@ Route::get('/principal', function () {
     return view('principal');
 });
 
-Route::get('/entrada-estoque-listar', [ControllerEntradaEstoque::class, 'listar']);
+Route::get('/entrada-estoque-listar', [ControllerEntradaEstoque::class, 'list'])->name('entrada-estoque-listar');
 
 Route::get('/entrada-estoque-cadastrar', function () {
     return view('entrada-estoque-cadastrar');
@@ -31,3 +31,5 @@ Route::get('/entrada-estoque-cadastrar', function () {
 Route::get('/entrada-estoque-alterar', function () {
     return view('entrada-estoque-alterar');
 });
+
+Route::get('/entrada-estoque-excluir/{id_entrada_estoque}', [ControllerEntradaEstoque::class, 'delete'])->name('entrada-estoque-excluir');
