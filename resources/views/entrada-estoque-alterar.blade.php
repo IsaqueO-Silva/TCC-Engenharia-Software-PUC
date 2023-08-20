@@ -19,49 +19,46 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="box box-primary">
-                        <form role="form" action="" method="post">
+                        <form role="form" action="{{ route('entrada-estoque-alterar-2', ['id'=>$id]) }}" method="post">
+
+                            {{ csrf_field() }}
+                            
                           <div class="box-body">
                             <div class="row">
                                 <div class="col-xs-12 col-md-12">
                                     <div class="form-group">
-                                        <label for="produto">Produto <span class="text-red">*</span></label>
-                                        <input type="text" class="form-control" id="produto" name="produto" required>
+                                        <label for="produto">Produto</label>
+                                        <input type="text" class="form-control" id="produto" name="produto" value="{{ $produto }}" disabled>
                                     </div>
                                 </div>
                             </div>
                             <div class="row">
-                              <div class="col-xs-12 col-md-6">
+                              <div class="col-xs-12 col-md-12">
                                 <div class="form-group">
-                                    <label for="estoque">Estoque <span class="text-red">*</span></label>
-                                    <input type="text" class="form-control" id="estoque" name="estoque" required>
+                                    <label for="estoque">Estoque</label>
+                                    <input type="text" class="form-control" id="estoque" name="estoque" value="{{ $estoque }}" disabled>
                                 </div>
                               </div>
                             </div>
                             <div class="row">
-                                <div class="col-xs-12 col-md-4">
+                                <div class="col-xs-12 col-md-8">
                                   <div class="form-group">
                                     <label for="quantidade">Quantidade <span class="text-red">*</span></label>
-                                    <input type="text" class="form-control" id="quantidade" name="quantidade" required>
+                                    <input type="text" class="form-control" id="quantidade" name="quantidade" value="{{ $quantidade }}" required>
                                   </div>
                                 </div>
                                 <div class="col-xs-12 col-md-4">
                                   <div class="form-group">
-                                      <label for="data">Data <span class="text-red">*</span></label>
-                                      <input type="text" class="form-control" id="data" name="data" required>
+                                      <label for="data">Data / Hora</label>
+                                      <input type="text" class="form-control" id="datahora" name="datahora" value="{{ $data_entrada_estoque }}" disabled>
                                   </div>
-                                </div>
-                                <div class="col-xs-12 col-md-4">
-                                    <div class="form-group">
-                                        <label for="hora">Hora <span class="text-red">*</span></label>
-                                        <input type="text" class="form-control" id="hora" name="hora" required>
-                                    </div>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-xs-12 col-md-12">
                                     <div class="form-group">
                                         <label for="observacoes">Observações</label>
-                                        <textarea type="text" class="form-control" id="observacoes" name="observacoes"></textarea>
+                                        <textarea type="text" class="form-control" id="observacoes" name="observacoes">{{ $observacoes }}</textarea>
                                     </div>
                                 </div>
                             </div>

@@ -1,9 +1,13 @@
 <?php
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\EntradaEstoque as ControllerEntradaEstoque;
-use App\Models\Produto as ModelProduto;
 use App\Models\Estoque as ModelEstoque;
+use App\Models\Produto as ModelProduto;
+use Symfony\Component\HttpFoundation\Request;
+use App\Models\EntradaEstoque as ModelEntradaEstoque;
+use App\Http\Controllers\EntradaEstoque as ControllerEntradaEstoque;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -38,8 +42,28 @@ Route::get('/entrada-estoque-cadastrar', function () {
 
 Route::post('/entrada-estoque-cadastrar-2', [ControllerEntradaEstoque::class, 'insert'])->name('entrada-estoque-cadastrar-2');
 
-Route::get('/entrada-estoque-alterar', function () {
-    return view('entrada-estoque-alterar');
-});
+Route::get('/entrada-estoque-alterar/{id_entrada_estoque}', function ($id) {
+    $entradaEstoque = ModelEntradaEstoque::get($id);
+
+    return view('entrada-estoque-alterar', array(
+        'id'                        => $entradaEstoque[0]->id_entrada_estoque,
+        'produto'                   => $entradaEstoque[0]->produto,
+        'estoque'                   => $entradaEstoque[0]->estoque,
+        'quantidade'                => $entradaEstoque[0]->quantidade,
+        'data_entrada_estoque'      => $entradaEstoque[0]->data_entrada_estoque,
+        'observacoes'               => $entradaEstoque[0]->observacoes
+        
+    ));
+})->name('entrada-estoque-alterar');
+
+Route::post('/entrada-estoque-alterar-2', function (Request $request) {
+
+    DB::table('entradas_estoque')->where('id_entrada_estoque', $request->query('id'))->update(array(
+        'quantidade'=>$request->quantidade,
+        'observacoes'=>$request->observacoes
+    ));
+
+    return redirect()->route('entrada-estoque-listar');
+})->name('entrada-estoque-alterar-2');
 
 Route::get('/entrada-estoque-excluir/{id_entrada_estoque}', [ControllerEntradaEstoque::class, 'delete'])->name('entrada-estoque-excluir');
