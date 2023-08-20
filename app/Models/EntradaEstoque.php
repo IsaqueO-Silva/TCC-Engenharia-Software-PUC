@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Http\Request;
 
 class EntradaEstoque extends Model
 {
@@ -15,10 +16,19 @@ class EntradaEstoque extends Model
     public static function list() {
         return DB::table('entradas_estoque')
         ->join('produtos', 'entradas_estoque.id_produto', '=', 'produtos.id_produto')
-        ->join('fornecedores', 'entradas_estoque.id_fornecedor', '=', 'fornecedores.id_fornecedor')
         ->join('estoques', 'entradas_estoque.id_estoque', '=', 'estoques.id_estoque')
-        ->select('id_entrada_estoque', 'produtos.nome AS produto', 'fornecedores.nome_fantasia AS fornecedor', 'quantidade', 'data_entrada_estoque', 'estoques.nome AS estoque')
+        ->select('id_entrada_estoque', 'produtos.nome AS produto', 'quantidade', 'data_entrada_estoque', 'estoques.nome AS estoque')
         ->get();
+    }
+
+    public static function create(Request $request) {
+
+        return self::insert(array(
+            'id_produto'            => $request->input('produto'),
+            'id_estoque'            => $request->input('estoque'),
+            'quantidade'            => $request->input('quantidade'),
+            'data_entrada_estoque'  => $request->input('data').' '.$request->input('hora')
+        ));
     }
 
     public static function destroy($idEntradaEstoque) {

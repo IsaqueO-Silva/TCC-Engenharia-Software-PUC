@@ -32,12 +32,6 @@
                             <div class="row">
                               <div class="col-xs-12 col-md-6">
                                 <div class="form-group">
-                                  <label for="fornecedor">Fornecedor <span class="text-red">*</span></label>
-                                  <input type="text" class="form-control" id="fornecedor" name="fornecedor" required>
-                                </div>
-                              </div>
-                              <div class="col-xs-12 col-md-6">
-                                <div class="form-group">
                                     <label for="estoque">Estoque <span class="text-red">*</span></label>
                                     <input type="text" class="form-control" id="estoque" name="estoque" required>
                                 </div>

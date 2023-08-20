@@ -30,7 +30,6 @@
                                         <tr>
                                             <th style="width: 10px">#</th>
                                             <th>Produto</th>
-                                            <th>Fornecedor</th>
                                             <th>Quantidade</th>
                                             <th>Data e hora</th>
                                             <th>Estoque</th>
@@ -42,7 +41,6 @@
                                             <tr>
                                                 <td>{{ $resultado->id_entrada_estoque }}</td>
                                                 <td>{{ $resultado->produto }}</td>
-                                                <td>{{ $resultado->fornecedor }}</td>
                                                 <td>{{ $resultado->quantidade }}</td>
                                                 <td>{{ \Carbon\Carbon::parse($resultado->data_entrada_estoque)->format('d/m/Y H:i') }}</td>
                                                 <td>{{ $resultado->estoque }}</td>

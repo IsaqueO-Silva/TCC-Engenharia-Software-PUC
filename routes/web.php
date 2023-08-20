@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EntradaEstoque as ControllerEntradaEstoque;
+use App\Models\Produto as ModelProduto;
+use App\Models\Estoque as ModelEstoque;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,8 +27,16 @@ Route::get('/principal', function () {
 Route::get('/entrada-estoque-listar', [ControllerEntradaEstoque::class, 'list'])->name('entrada-estoque-listar');
 
 Route::get('/entrada-estoque-cadastrar', function () {
-    return view('entrada-estoque-cadastrar');
-});
+    $produtos       = ModelProduto::list();
+    $estoques       = ModelEstoque::list();
+
+    return view('entrada-estoque-cadastrar', array(
+        'produtos'      => $produtos,
+        'estoques'      => $estoques,
+    ));
+})->name('entrada-estoque-cadastrar');
+
+Route::post('/entrada-estoque-cadastrar-2', [ControllerEntradaEstoque::class, 'insert'])->name('entrada-estoque-cadastrar-2');
 
 Route::get('/entrada-estoque-alterar', function () {
     return view('entrada-estoque-alterar');

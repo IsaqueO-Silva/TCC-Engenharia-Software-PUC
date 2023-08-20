@@ -13,6 +13,13 @@ class EntradaEstoque extends Controller
         return view('entrada-estoque-listar', array('resultados' => $resultado));
     }
 
+    public static function insert(Request $request) {
+
+        ModelEntradaEstoque::create($request);
+
+        return redirect()->route('entrada-estoque-cadastrar');
+    }
+
     public function delete($idEntradaEstoque) {
         ModelEntradaEstoque::destroy($idEntradaEstoque);
 
