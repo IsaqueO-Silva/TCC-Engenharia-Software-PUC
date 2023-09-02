@@ -3,9 +3,7 @@ CREATE DATABASE sistema_puc_final;
 CREATE TABLE usuarios (
 	id_usuario INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT,
     usuario VARCHAR(255) NOT NULL,
-    senha VARCHAR(255) NOT NULL,
-    nivel_acesso ENUM('A', 'U') NOT NULL,
-    data_cadastro DATETIME NOT NULL
+    senha VARCHAR(255) NOT NULL
 );
 
 CREATE TABLE marcas (
