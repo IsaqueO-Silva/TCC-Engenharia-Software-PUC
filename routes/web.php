@@ -27,12 +27,31 @@ Route::get('/', function () {
 })->name('/');
 
 Route::get('/principal', function () {
+
+    if (!auth()->check()) {
+        // Se o usuário não estiver autenticado, redirecione para a tela de login
+        return redirect('/');
+    }
+
     return view('principal');
 });
 
-Route::get('/entrada-estoque-listar', [ControllerEntradaEstoque::class, 'list'])->name('entrada-estoque-listar');
+Route::get('/entrada-estoque-listar', function() {
+    
+    if (!auth()->check()) {
+        // Se o usuário não estiver autenticado, redirecione para a tela de login
+        return redirect('/');
+    }
+
+    echo ControllerEntradaEstoque::list();
+})->name('entrada-estoque-listar');
 
 Route::get('/entrada-estoque-cadastrar', function () {
+    if (!auth()->check()) {
+        // Se o usuário não estiver autenticado, redirecione para a tela de login
+        return redirect('/');
+    }
+
     $produtos       = ModelProduto::list();
     $estoques       = ModelEstoque::list();
 
@@ -45,6 +64,11 @@ Route::get('/entrada-estoque-cadastrar', function () {
 Route::post('/entrada-estoque-cadastrar-2', [ControllerEntradaEstoque::class, 'insert'])->name('entrada-estoque-cadastrar-2');
 
 Route::get('/entrada-estoque-alterar/{id_entrada_estoque}', function ($id) {
+    if (!auth()->check()) {
+        // Se o usuário não estiver autenticado, redirecione para a tela de login
+        return redirect('/');
+    }
+
     $entradaEstoque = ModelEntradaEstoque::get($id);
 
     return view('entrada-estoque-alterar', array(
