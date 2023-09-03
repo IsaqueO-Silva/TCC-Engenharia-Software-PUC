@@ -37,13 +37,16 @@
                         <li class="dropdown user user-menu">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                 <i class="fa fa-user" aria-hidden="false"></i>
-                                Admin
+                                @auth
+                                    <!-- Conteúdo a ser exibido para usuários autenticados -->
+                                   {{ Auth::user()->usuario }}
+                                @endauth
                                 <span class="hidden-xs"></span>
                             </a>
                             <ul class="dropdown-menu">                  
                                 <li class="user-footer">
                                     <div class="pull-right">
-                                        <a href="/logout" class="btn btn-default btn-flat">Sair</a>
+                                        <a href="{{ route('logout') }}" class="btn btn-default btn-flat">Sair</a>
                                     </div>
                                 </li>
                             </ul>

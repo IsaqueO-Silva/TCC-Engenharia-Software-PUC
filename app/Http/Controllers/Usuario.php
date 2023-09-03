@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class Usuario extends Controller
 {
@@ -23,6 +24,7 @@ class Usuario extends Controller
         if ($user) {
             // Verifique se a senha MD5 fornecida corresponde à senha no banco de dados
             if (md5($senha) == $user->senha) {
+                Auth::loginUsingId($user->id);
                 return redirect('/principal'); // Redirecionar para a página após o login
             }
 

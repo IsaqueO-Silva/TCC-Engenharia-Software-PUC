@@ -1,13 +1,14 @@
 <?php
 
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Models\Estoque as ModelEstoque;
 use App\Models\Produto as ModelProduto;
 use Symfony\Component\HttpFoundation\Request;
 use App\Models\EntradaEstoque as ModelEntradaEstoque;
-use App\Http\Controllers\EntradaEstoque as ControllerEntradaEstoque;
 use App\Http\Controllers\Usuario as ControllerUsuario;
+use App\Http\Controllers\EntradaEstoque as ControllerEntradaEstoque;
 
 
 /*
@@ -70,3 +71,8 @@ Route::post('/entrada-estoque-alterar-2', function (Request $request) {
 Route::get('/entrada-estoque-excluir/{id_entrada_estoque}', [ControllerEntradaEstoque::class, 'delete'])->name('entrada-estoque-excluir');
 
 Route::post('/login', [ControllerUsuario::class, 'login'])->name('login');
+
+Route::get('/logout', function () {
+    Auth::logout();
+    return redirect()->route('/');
+})->name('logout');
