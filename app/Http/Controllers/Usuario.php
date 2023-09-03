@@ -2,19 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Usuario as ModelUsuario;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class Usuario extends Controller
 {
     public function login(Request $request)
     {
-        $usuario = $request->input('login');
-        $senha = $request->input('password');
+        $usuario    = $request->input('login');
+        $senha      = $request->input('password');
 
         if(empty($usuario) || empty($senha)) {
-            dd('sem dados');
+            return redirect()->route('/')->with('error', 'Por favor, informe usuário e senha.');
         }
 
         // Busque o usuário pelo nome de usuário
@@ -23,15 +22,13 @@ class Usuario extends Controller
         // Verifique se o usuário existe
         if ($user) {
             // Verifique se a senha MD5 fornecida corresponde à senha no banco de dados
-            if (Hash::check(md5($senha), $user->senha)) {
-                // Autenticação bem-sucedida
-                Auth::loginUsingId($user->id_usuario);
+            if (md5($senha) == $user->senha) {
                 return redirect('/principal'); // Redirecionar para a página após o login
             }
+
         }
 
         // Autenticação falhou
-        //return redirect()->route('login')->with('error', 'Credenciais inválidas.');
-        dd('Autenticação falhou');
+        return redirect()->route('/')->with('error', 'Credenciais inválidas.');
     }
 }

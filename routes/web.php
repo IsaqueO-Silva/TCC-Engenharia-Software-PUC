@@ -23,7 +23,7 @@ use App\Http\Controllers\Usuario as ControllerUsuario;
 
 Route::get('/', function () {
     return view('login');
-});
+})->name('/');
 
 Route::get('/principal', function () {
     return view('principal');

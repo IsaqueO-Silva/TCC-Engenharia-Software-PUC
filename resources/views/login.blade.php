@@ -32,6 +32,12 @@
     <b>we</b>Stock
   </div>
 
+  @if(session('error'))
+    <div class="alert alert-danger">
+        {{ session('error') }}
+    </div>
+  @endif
+
   <!-- /.login-logo -->
   <div class="login-box-body">
     <p class="login-box-msg">Faça login para iniciar sua sessão</p>
