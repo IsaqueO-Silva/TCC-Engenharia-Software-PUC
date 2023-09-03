@@ -36,7 +36,8 @@ class EntradaEstoque extends Model
             'id_produto'            => $request->input('produto'),
             'id_estoque'            => $request->input('estoque'),
             'quantidade'            => $request->input('quantidade'),
-            'data_entrada_estoque'  => $request->input('data').' '.$request->input('hora')
+            'data_entrada_estoque'  => $request->input('data').' '.$request->input('hora'),
+            'observacoes'            => $request->input('observacoes')
         ));
     }
 
